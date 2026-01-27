@@ -10,7 +10,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-hero opacity-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.15),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(var(--secondary)/0.15),transparent_50%)]" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -25,25 +25,27 @@ export const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-primary/10 border border-primary/20 mb-6 backdrop-blur-sm"
             >
               <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-              <span className="text-sm text-primary font-medium">Mentorship Platform</span>
+              <span className="text-sm text-primary font-medium">
+                Mentorship Platform
+              </span>
             </motion.div>
-            
+
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Transform Your Career with{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Guided Mentorship
               </span>
             </h1>
-            
+            {/* We are working in hero section */}
             <p className="text-xl text-foreground/70 mb-8 leading-relaxed max-w-xl">
-              Connect with world-class mentors, get recommendations, 
-              and accelerate your growth with intelligent scheduling and insights.
+              Connect with world-class mentors, get recommendations, and
+              accelerate your growth with intelligent scheduling and insights.
             </p>
-            
+
             <div className="flex flex-wrap gap-4">
               <Link to="/auth/signup">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-gradient-primary hover:opacity-90 text-lg px-8 shadow-glow-primary animate-float"
                 >
                   Start Free
@@ -51,17 +53,17 @@ export const HeroSection = () => {
                 </Button>
               </Link>
               <Link to="/mentors">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="text-lg px-8 bg-background/50 backdrop-blur-sm border-primary/20 hover:border-primary/40"
                 >
                   Browse Mentors
                 </Button>
               </Link>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -79,11 +81,13 @@ export const HeroSection = () => {
               <div className="h-12 w-px bg-border" />
               <div>
                 <div className="text-3xl font-bold text-primary"></div>
-                <div className="text-sm text-foreground/60">Acheivements unlocked!</div>
+                <div className="text-sm text-foreground/60">
+                  Acheivements unlocked!
+                </div>
               </div>
             </motion.div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -103,7 +107,9 @@ export const HeroSection = () => {
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-sm text-foreground/60">AI Match Score</div>
+                    <div className="text-sm text-foreground/60">
+                      AI Match Score
+                    </div>
                     <div className="text-2xl font-bold text-primary">98%</div>
                   </div>
                 </div>
