@@ -34,7 +34,17 @@ const Auth = () => {
     return () => subscription.unsubscribe();
   }, [navigate]);
 
-  
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!role) {
+      toast({
+        title: "Please select a role",
+        description: "Choose whether you want to be a mentor or mentee",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setLoading(true);
     const form = e.target as HTMLFormElement;
     const email = (form.elements.namedItem("signup-email") as HTMLInputElement).value;
