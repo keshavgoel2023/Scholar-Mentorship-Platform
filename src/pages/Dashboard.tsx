@@ -170,19 +170,12 @@ const Dashboard = () => {
         setProfile(profileData);
       }
 
-      // Fetch dashboard stats from backend function
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        const { data: statsData, error: statsError } = await supabase.functions.invoke('get-dashboard-stats', {
-          headers: {
-            Authorization: `Bearer ${session.access_token}`,
-          },
-        });
+    const { data: statsData, error: statsError } =
+      await supabase.functions.invoke('get-dashboard-stats');
 
-        if (!statsError && statsData) {
-          setBackendStats(statsData);
-        }
-      }
+      if (!statsError && statsData) {
+        setBackendStats(statsData);
+    }
 
       // Load upcoming sessions for both mentee and mentor views
       const { data: sessionsData } = await supabase
@@ -308,7 +301,6 @@ const Dashboard = () => {
   const handleJoinSession = async (sessionToJoin: any) => {
     try {
       const meetingUrl = `https://meet.jit.si/scholar-${sessionToJoin.id}`;
-      const { data: { session } } = await supabase.auth.getSession();
       
       console.log('Joining session:', sessionToJoin.id);
       const { data, error } = await supabase.functions.invoke('manage-session', {
@@ -318,7 +310,6 @@ const Dashboard = () => {
           status: 'confirmed',
           meetingUrl,
         },
-        headers: session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {},
       });
 
       if (error) {
