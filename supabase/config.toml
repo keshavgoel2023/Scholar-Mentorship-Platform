@@ -1,0 +1,28 @@
+project_id = "tbnfkpkfncwoweqzmqrd"
+
+[functions.chat-assistant]
+verify_jwt = true
+
+[functions.manage-session]
+verify_jwt = true
+
+[functions.get-dashboard-stats]
+verify_jwt = true
+
+[functions.send-email]
+verify_jwt = false
+
+[functions.get-user-email]
+verify_jwt = true
+
+[functions.test-email]
+verify_jwt = false
+
+[functions.admin-analytics]
+verify_jwt = true
+
+[functions.submit-feedback]
+verify_jwt = true
+
+[functions.manage-availability]
+verify_jwt = true
