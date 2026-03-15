@@ -305,55 +305,11 @@ const Dashboard = () => {
   };
 
   // Confirm and join a session: ensure meeting URL exists, update status if needed, then open meeting
-  const handleJoinSession = async (sessionToJoin: any) => {
-    const generatedMeetingUrl = `https://meet.jit.si/scholar-${sessionToJoin.id}`;
-    const meetingUrl = sessionToJoin.meeting_url || generatedMeetingUrl;
-
-    // Open tab immediately from click event to avoid popup blockers after async work
-    const meetingWindow = window.open('', '_blank', 'noopener,noreferrer');
-
-    try {
-      if (sessionToJoin.status !== 'confirmed' || !sessionToJoin.meeting_url) {
-        const { data: { session } } = await supabase.auth.getSession();
-
-        console.log('Joining session:', sessionToJoin.id);
-        const { data, error } = await supabase.functions.invoke('manage-session', {
-          body: {
-            action: 'update-status',
-            sessionId: sessionToJoin.id,
-            status: 'confirmed',
-            meetingUrl,
-          },
-          headers: session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {},
-        });
-
-        if (error) {
-          console.error('Error from manage-session:', error);
-          throw error;
-        }
-
-        console.log('Session confirmed successfully:', data);
-        toast({ title: 'Session confirmed', description: 'Meeting link sent to both participants via email.' });
-      }
-
-      if (meetingWindow) {
-        meetingWindow.location.href = meetingUrl;
-      } else {
-        window.location.assign(meetingUrl);
-      }
-
-      // Refresh dashboard data to keep session state in sync
-      if (profile?.id) {
-        await loadDashboardData(profile.id);
-      }
-    } catch (e: any) {
-      if (meetingWindow && !meetingWindow.closed) {
-        meetingWindow.close();
-      }
-      console.error('Error confirming session:', e);
-      toast({ title: 'Could not join', description: e.message || 'Please try again in a moment.', variant: 'destructive' });
-    }
-  };
+  // Simple Join Session → Open video meeting directly
+const handleJoinSession = (sessionToJoin: any) => {
+  const meetingUrl = `https://meet.jit.si/scholar-${sessionToJoin.id}`;
+  window.open(meetingUrl, "_blank");
+};
 
   const formatDate = (date: string) => {
     const d = new Date(date);
