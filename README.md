@@ -123,17 +123,4 @@ Project built by Keshav goel and Lokesh Garg
 ---
 
 
-## 🔹 Phase 10 — Deployment & CI/CD
 
-**Goal:** Cloud deployment
-
-**Tasks**
-
-* Deploy frontend to Vercel
-* Setup environment configs
-* Add GitHub Actions for auto-deploy
-
-**Cloud / DevOps Aspect**
-
-* CI/CD pipeline
-* Automated cloud deployment
